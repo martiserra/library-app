@@ -1,4 +1,6 @@
 library-app
 ===========
 
-Nodejs app for Library Occupancy Visualization
+Nodejs - Express backend for Library Occupancy Visualization App
+
+Currently just returning mocked data 

@@ -4,5 +4,5 @@
 
 
 exports.render = function(req, res){
-  res.send( {"title":"The Library App","subtitle":"Coming soon..."} );
+  res.json∫( {"title":"The Library App","subtitle":"Coming soon..."} );
 };

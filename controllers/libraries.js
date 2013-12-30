@@ -9,5 +9,5 @@ var libraries = [
 ];
 
 exports.list = function(req, res){
-  res.send(libraries);
+  res.json(libraries);
 };

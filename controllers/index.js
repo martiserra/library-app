@@ -4,5 +4,5 @@
 
 
 exports.render = function(req, res){
-  res.render('index', { title: 'Express' });
+  res.send( {"title":"The Library App","subtitle":"Coming soon..."} );
 };

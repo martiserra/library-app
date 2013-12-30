@@ -7,6 +7,10 @@ module.exports = function(app) {
   app.get('/libraries', libraries.list);
   app.get('/', index.render);
 
+  app.get('*', function(req, res){
+    res.send('URL Not Found', 404);
+  });
+
 };
 
 

@@ -1,6 +1,5 @@
-
-/*
- * GET users listing.
+/**
+ * Controller for libraries routes
  */
 
 exports.list = function(req, res){

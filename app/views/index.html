@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Biblioteques App (BETA)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="cleartype" content="on">
+
+    <!-- Lungo - Stylesheets -->
+    <link rel="stylesheet" href="lungo/lungo.css">    
+    <link rel="stylesheet" href="lungo/lungo.icon.css">    
+    <link rel="stylesheet" href="lungo/lungo.theme.css">
+    
+</head>
+
+<body class="app">
+    
+    <section id="libraries">
+        <header class="title">
+            <nav class="on-left">
+              <a href="#" data-view-section="back" data-icon="chevron-left"></a>
+            </nav>
+            
+            <h1 class="centered title"> Biblioteques App <span class="text bold">(BETA)</span></h1>
+            
+            <nav class="on-right">
+              <a href="#" data-view-menu="options" data-icon="menu"></a>
+            </nav>
+        </header>
+
+        <nav id="options" data-control="menu"> 
+            <a href="#" data-view-article="home-menu" data-icon="menu">Home</a>
+            <a href="#" data-view-article="explore-menu" data-icon="info-sign">Explore</a>
+            <a href="#" data-view-article="activity-menu" data-icon="comments">Activity</a>
+            <a href="#" data-view-article="profile-menu" data-icon="user">Profile</a>
+        </nav>
+
+        <article id="list" class="active list scroll">
+            <ul>
+              <li class="arrow">
+                  <a href="#" data-view-article="view"> 
+                    <strong class="text bold"> Ciències Socials UAB </strong>
+                    <small> UAB (Bellaterra) </small>
+                  </a>
+              </li>
+              <li>
+                  <strong class="text bold"> Pròximament... </strong>
+                  <small> Biblioteques a tot Catalunya </small>
+              </li>
+            </ul>
+        </article>
+
+        <article id="view" >
+            biblioteca
+        </article>
+        
+    </section>
+
+    <section id="menu" data-transition="slide">
+      <header data-title="data-control=menu">
+          <nav>
+              <a href="#" data-view-menu="options" data-icon="menu"></a>
+          </nav>
+          <nav class="on-right">
+              <a href="#" data-view-menu="options-icons" data-icon="grid"></a>
+          </nav>
+      </header>  
+      
+      <article id="list" class="active list scroll">
+      </article>
+    </section>
+
+    <!-- Lungo - Dependencies -->
+    <script src="quojs/quo.js"></script>
+    <script src="lungo/lungo.js"></script>
+    <script>
+        Lungo.init({
+        });      
+    </script>
+</body>

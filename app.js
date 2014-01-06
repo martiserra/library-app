@@ -17,13 +17,15 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 
+app.use(express.static(__dirname + '/components'));
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
 //Bootstrap routes
-require('./routes/routes')(app);
+require('./routes/routes')(app, __dirname);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

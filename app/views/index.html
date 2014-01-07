@@ -16,7 +16,11 @@
     <link rel="stylesheet" href="lungo/lungo.css">    
     <link rel="stylesheet" href="lungo/lungo.icon.css">    
     <link rel="stylesheet" href="lungo/lungo.theme.css">
-    
+    <link rel="stylesheet" href="styles/library.theme.css">
+
+    <!-- Chart.js dependencies -->
+    <script src="chartjs/Chart.js"></script>
+
 </head>
 
 <body class="app">
@@ -35,10 +39,9 @@
         </header>
 
         <nav id="options" data-control="menu"> 
-            <a href="#" data-view-article="home-menu" data-icon="menu">Home</a>
-            <a href="#" data-view-article="explore-menu" data-icon="info-sign">Explore</a>
-            <a href="#" data-view-article="activity-menu" data-icon="comments">Activity</a>
-            <a href="#" data-view-article="profile-menu" data-icon="user">Profile</a>
+            <a href="#" data-view-article="list" data-icon="menu">Llista de Biblioteques</a>
+            <a href="#" data-view-article="explore-menu" data-icon="info-sign">Informació</a>
+            <a href="#" data-view-article="activity-menu" data-icon="comments">Opinions</a>
         </nav>
 
         <article id="list" class="active list scroll">
@@ -49,31 +52,44 @@
                     <small> UAB (Bellaterra) </small>
                   </a>
               </li>
-              <li>
-                  <strong class="text bold"> Pròximament... </strong>
+              <li class="light">
+                  <strong class="text bold"> Properament... </strong>
                   <small> Biblioteques a tot Catalunya </small>
               </li>
             </ul>
         </article>
 
-        <article id="view" >
-            biblioteca
+        <article id="view" class="list scroll active">
+            <ul>
+                <li class="anchor theme"><strong>Ciències Socials UAB</strong></li>
+            </ul>    
+            <img src="images/1.jpg" class="responsive">
+            <ul>
+                <li> <div id="percentage"> 75% </div> </li>
+                <li data-icon="group">
+                    <strong> 250 places totals </strong>
+                </li>
+                <li data-icon="refresh">
+                    <strong> Actualitzat fa 5 minuts </strong>
+                </li>
+                <li class="centered">
+                    <canvas id="canvas" height="200" width="400" sytle='max-width: 100%;'</canvas>
+                </li>
+                <li> agag </li>
+            </ul>
+            
+            <!--
+            <div> Ciències Socials UAB </div>
+              <img src="images/1.jpg" class="responsive">
+            <div id="percentage"> 75% </div>
+            <div>
+                <img data-icon="chevron-left"> 250 places
+            </div>
+                <div class="on-right text tiny"> Darrera Actualització: 04/01/2014 11:30</div>
+
+            -->
         </article>
         
-    </section>
-
-    <section id="menu" data-transition="slide">
-      <header data-title="data-control=menu">
-          <nav>
-              <a href="#" data-view-menu="options" data-icon="menu"></a>
-          </nav>
-          <nav class="on-right">
-              <a href="#" data-view-menu="options-icons" data-icon="grid"></a>
-          </nav>
-      </header>  
-      
-      <article id="list" class="active list scroll">
-      </article>
     </section>
 
     <!-- Lungo - Dependencies -->
@@ -83,4 +99,29 @@
         Lungo.init({
         });      
     </script>
+    <script>
+
+                var lineChartData = {
+                        labels : ["9:00","10:00","11:00","12:00","13:00","14:00","15:00"],
+                        datasets : [
+                                {
+                                        fillColor : "rgba(151,187,205,0.5)",
+                                        strokeColor : "rgba(151,187,205,1)",
+                                        pointColor : "rgba(151,187,205,1)",
+                                        pointStrokeColor : "#fff",
+                                        data : [28,48,40,19,96,27,100]
+                                }
+                        ]
+                }
+
+                var options = {
+                        scaleOverride : true,
+                        scaleSteps : 5,
+                        scaleStepWidth : 20,
+                        scaleStartValue : 0
+                }
+
+        var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData, options);
+        
+        </script>
 </body>

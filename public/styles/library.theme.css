@@ -1,0 +1,23 @@
+img.responsive {
+    max-width: 100%;
+}
+
+div#percentage {
+    font-size: 5em;
+    padding: 5px;
+    text-align: center;
+    font-weight: 100;
+    -webkit-text-shadow: 0.03em 0.05em #cfcfcf;
+    -moz-text-shadow: 0.03em  0.05em #cfcfcf;
+    -ms-text-shadow: 0.03em  0.05em #cfcfcf;
+    -o-text-shadow: 0.03em  0.05em #cfcfcf;
+    text-shadow: 0.03em  0.05em #cfcfcf;
+}
+
+article#view {
+    background-color: #fff;
+}
+
+article#view > div {
+    padding: 10px;
+}

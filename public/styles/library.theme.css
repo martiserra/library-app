@@ -21,3 +21,7 @@ article#view {
 article#view > div {
     text-align: center;
 }
+
+canvas {
+    margin-bottom: 40px;
+}

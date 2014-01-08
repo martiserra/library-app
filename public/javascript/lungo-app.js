@@ -35,6 +35,7 @@ getChartOptions = function(){
         scaleSteps : 5,
         scaleStepWidth : 20,
         scaleStartValue : 0
-    }   
+    } 
+    return options;
 };
 

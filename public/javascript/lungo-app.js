@@ -1,6 +1,10 @@
 Lungo.init({
 }); 
 
-Lungo.dom('#view').on('load', function(event){
-    Lungo.dom('#percentage').text('80%');
-}); 
+Lungo.Events.init({
+    'load article#view': function(){
+        Lungo.dom('#percentage').text('80%');
+    }
+});
+
+

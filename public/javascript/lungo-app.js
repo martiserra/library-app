@@ -1,11 +1,25 @@
+// CONSTANTS
+var GET_LIBRARY = "http://localhost:3000/libraries/1";
+
+// Init Lungo Application
 Lungo.init({
 }); 
 
+// Init Lungo Services for Ajax Requests
+Lungo.Service.Settings.async = false;
+Lungo.Service.Settings.error = function(type, xhr){
+    alert('Error in Ajax request::' + type + '::' + xhr);
+};
+Lungo.Service.Settings.headers["Content-Type"] = "application/json";
+Lungo.Service.Settings.crossDomain = false;
+Lungo.Service.Settings.timeout = 20000;
+
+// Lungo Events
 Lungo.Events.init({
     'load article#view': function(){
-        Lungo.dom('#percentage').text('80%');
-        //Lungo.dom('#canvas').style('width', '600px');//window.innerWidth - 20;
+        var library = JSON.parse(Lungo.Service.json(GET_LIBRARY, ''));
 
+        Lungo.dom('#percentage').text(getPercentage(library.occupancy));
         var ctx = document.getElementById("occupancyChart").getContext("2d");
         ctx.canvas.width  = window.innerWidth - 20;
 
@@ -13,6 +27,7 @@ Lungo.Events.init({
     }
 });
 
+// Chart Creation
 getChartData = function(){
     var lineChartData = {
         labels : ["9:00","10:00","11:00","12:00","13:00","14:00","15:00"],
@@ -38,4 +53,9 @@ getChartOptions = function(){
     } 
     return options;
 };
+
+// Helpers
+getPercentage = function(number) {
+  return Math.round(number * 100) + '%';
+}
 

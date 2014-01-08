@@ -22,6 +22,6 @@ article#view > div {
     text-align: center;
 }
 
-canvas {
+canvas#occupancyChart {
     margin-bottom: 40px;
 }

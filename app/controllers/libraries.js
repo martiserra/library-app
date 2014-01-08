@@ -3,11 +3,15 @@
  */
 
 var libraries = [
-{"id":1, "name":"Demo Biblioteca", "places":120, "available":"1/1/2013"},
-{"id":2, "name":"Ciències UAB", "places":220, "available":"5/5/2014"},
-{"id":3, "name":"More Coming Soon", "places":0, "available":"1/1/2015"},
+{"id":1, "name":"Ciències Socials UAB", "places":220, "occupancy":0.85}
 ];
 
-exports.list = function(req, res){
-  res.json(libraries);
+//exports.list = function(req, res){
+//  res.json(libraries);
+//};
+
+exports.get = function(id){
+  for (var i=0; i < libraries.length; i++) {
+    if (libraries[i].id == id) return libraries[i];
+  }
 };

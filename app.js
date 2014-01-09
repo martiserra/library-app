@@ -6,6 +6,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var mongoose = require('mongoose');
 
 var app = express();
 
@@ -19,6 +20,9 @@ app.use(app.router);
 
 app.use(express.static(__dirname + '/components'));
 app.use(express.static(__dirname + '/public'));
+
+// Connect to MongoDB when the app initializes
+mongoose.connect('mongodb://localhost/librariesapp');
 
 // development only
 if ('development' == app.get('env')) {

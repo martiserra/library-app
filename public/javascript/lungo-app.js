@@ -42,6 +42,8 @@ refreshLibraryData = function(){
     var library = JSON.parse(Lungo.Service.json(GET_LIBRARY, ''));
 
     Lungo.dom('#percentage').text(getPercentage(library.occupancy));
+    Lungo.dom('#places').text(library.places);
+    Lungo.dom('#library-name').text(library.name);
     var ctx = document.getElementById("occupancyChart").getContext("2d");
     ctx.canvas.width  = window.innerWidth - 20;
 

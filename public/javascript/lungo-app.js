@@ -30,15 +30,25 @@ Lungo.Service.Settings.timeout = 20000;
 // Lungo Events
 Lungo.Events.init({
     'load article#view': function(){
-        var library = JSON.parse(Lungo.Service.json(GET_LIBRARY, ''));
-
-        Lungo.dom('#percentage').text(getPercentage(library.occupancy));
-        var ctx = document.getElementById("occupancyChart").getContext("2d");
-        ctx.canvas.width  = window.innerWidth - 20;
-
-        var myLine = new Chart(document.getElementById("occupancyChart").getContext("2d")).Line(getChartData(), getChartOptions());
+        refreshLibraryData();    
+    }, 
+    'tap article#view li#refresh' : function(){
+        refreshLibraryData();    
     }
 });
+
+// AJAX Calls
+refreshLibraryData = function(){
+    var library = JSON.parse(Lungo.Service.json(GET_LIBRARY, ''));
+
+    Lungo.dom('#percentage').text(getPercentage(library.occupancy));
+    var ctx = document.getElementById("occupancyChart").getContext("2d");
+    ctx.canvas.width  = window.innerWidth - 20;
+
+    var myLine = new Chart(document.getElementById("occupancyChart").getContext("2d")).Line(getChartData(), getChartOptions());
+
+}
+
 
 // Chart Creation
 getChartData = function(){

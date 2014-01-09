@@ -46,6 +46,7 @@ refreshLibraryData = function(){
     Lungo.dom('#library-name').text(library.name);
     var ctx = document.getElementById("occupancyChart").getContext("2d");
     ctx.canvas.width  = window.innerWidth - 20;
+    ctx.canvas.height = 150;
 
     var myLine = new Chart(document.getElementById("occupancyChart").getContext("2d")).Line(getChartData(), getChartOptions());
 

@@ -6,8 +6,14 @@ module.exports = function(app, basedir) {
     
   //app.get('/libraries', libraries.list);
   app.get('/libraries/:id', function(req, res) {
-    var library = libraries.get(req.params.id);
-    res.json(JSON.stringify(library));
+    libraries.get(req.params.id, function(library) {
+      if (library != null) {
+        res.json(JSON.stringify(library));
+      } else {
+        res.send('Not Found', 404);
+      }
+    });
+    
   });
 
   app.get('/', function(req, res) {

@@ -14,8 +14,6 @@ module.exports = function(app, basedir) {
     res.sendfile(basedir + '/app/views/index.html');
   });
 
-  //app.get('*', function(req, res){
-  //  res.send('URL Not Found', 404);
   //});
 
 };

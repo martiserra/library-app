@@ -9,9 +9,9 @@ Lungo.init({
 Lungo.Service.Settings.async = false;
 Lungo.Service.Settings.error = function(type, xhr){
     Lungo.Notification.error(
-        "Error",                      
-        "Error Connecting to the server - " + type + " :: " + xhr,    
-        "cancel",                    
+        "Error",
+        "Error Connecting to the server - " + type + " :: " + xhr,
+        "cancel", 
         7                             
     );
 };

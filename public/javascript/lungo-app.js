@@ -8,7 +8,12 @@ Lungo.init({
 // Init Lungo Services for Ajax Requests
 Lungo.Service.Settings.async = false;
 Lungo.Service.Settings.error = function(type, xhr){
-    alert('Error in Ajax request::' + type + '::' + xhr);
+    Lungo.Notification.error(
+        "Error",                      
+        "Error Connecting to the server - " + type + " :: " + xhr,    
+        "cancel",                    
+        7                             
+    );
 };
 Lungo.Service.Settings.headers["Content-Type"] = "application/json";
 Lungo.Service.Settings.crossDomain = false;

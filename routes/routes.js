@@ -14,6 +14,8 @@ module.exports = function(app, basedir) {
     res.sendfile(basedir + '/app/views/index.html');
   });
 
+  //app.post('/libraries', function(req, res) {
+    //libraries.post(req.body.code, req.body.name, req.body.places)
   //});
 
 };

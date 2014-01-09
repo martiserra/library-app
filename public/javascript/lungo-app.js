@@ -1,5 +1,5 @@
 // CONSTANTS
-var GET_LIBRARY = "http://localhost:3000/libraries/1";
+var GET_LIBRARY = "/libraries/1";
 
 // Init Lungo Application
 Lungo.init({

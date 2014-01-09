@@ -5,6 +5,14 @@ var GET_LIBRARY = "/libraries/1";
 Lungo.init({
 }); 
 
+// Show Disclaimer Notification
+Lungo.Notification.success(
+    "Estem de Proves!",
+    "L'aplicació funcionarà els dies 11 i 12 de Gener en fase de proves a la Biblioteca de Ciències Socials de la UAB. Si vols, deixa'ns els teus comentaris a l'apartat d'opinions. Gràcies!",
+    7,
+    function(){}
+);
+
 // Init Lungo Services for Ajax Requests
 Lungo.Service.Settings.async = false;
 Lungo.Service.Settings.error = function(type, xhr){

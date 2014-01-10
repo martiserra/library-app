@@ -4,27 +4,25 @@
 
 var  Library = require('../models/library.js');
 
-exports.get = function(id, callback){
+exports.get = function(req, res) {
+  var id = req.params.id;
+
   Library.findOne({code: id}, function(error, library) {
-    if (error) {
+    
+    if (error || library == null) {
       console.log('Error loading library' + id + ' -- ' + error);
-      callback(null);
+      res.send('Not Found', 404);
+
     } else {
-      if (library != null) {
-        var libraryPresenter = {
-          code: library.code,
-          name: library.name,
-          places: library.places,
-          occupancy: 0.83 
-        }
-        callback(libraryPresenter); 
-      } else {
-        callback(null);
+      var libraryPresenter = {
+        code: library.code,
+        name: library.name,
+        places: library.places,
+        occupancy: 0.83 
       }
-        
+      res.json(JSON.stringify(libraryPresenter));
     }
-   
-  })
+  });  
 };
 
 exports.post = function(code, name, places) {

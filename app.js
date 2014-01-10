@@ -21,8 +21,10 @@ app.use(app.router);
 app.use(express.static(__dirname + '/components'));
 app.use(express.static(__dirname + '/public'));
 
+var config = require('./config/config');
+
 // Connect to MongoDB when the app initializes
-mongoose.connect('mongodb://localhost/librariesapp');
+mongoose.connect(config.db());
 
 // development only
 if ('development' == app.get('env')) {

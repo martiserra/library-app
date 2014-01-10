@@ -24,7 +24,3 @@ exports.get = function(req, res) {
     }
   });  
 };
-
-exports.post = function(code, name, places) {
-    new Library({code: code, name: name, places: places}).save();
-}

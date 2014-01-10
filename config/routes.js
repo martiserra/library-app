@@ -2,6 +2,7 @@
 
 module.exports = function(app, basedir, express) {
   var libraries = require('../app/controllers/libraries');
+  var admin = require('../app/controllers/admin');
   var auth = express.basicAuth('clara', 'cmg000');
 
   // App routes
@@ -12,9 +13,7 @@ module.exports = function(app, basedir, express) {
   });
 
   // Admin routes
-  app.get('/admin', auth, function(req, res) {
-    res.render('index');
-  });
+  app.get('/admin', admin.list);
 
   app.post('/libraries', function(req, res) {
     libraries.post(req.body.code, req.body.name, req.body.places)

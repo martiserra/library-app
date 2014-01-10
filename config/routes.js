@@ -8,12 +8,11 @@ module.exports = function(app, basedir, express) {
   app.get('/libraries/:id', libraries.get);
 
   app.get('/', function(req, res) {
-    res.sendfile(basedir + '/app/views/index.html');
+    res.sendfile(basedir + '/public/html/index.html');
   });
 
   // Admin routes
   app.get('/admin', auth, function(req, res) {
-    //res.sendfile(basedir + '/admin/views/index.html');
     res.render('index');
   });
 

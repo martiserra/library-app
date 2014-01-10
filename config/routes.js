@@ -2,9 +2,7 @@
 
 module.exports = function(app, basedir) {
   var libraries = require('../app/controllers/libraries');
-  //var index = require('../app/controllers/index');
-    
-  //app.get('/libraries', libraries.list);
+
   app.get('/libraries/:id', libraries.get);
 
   app.get('/', function(req, res) {

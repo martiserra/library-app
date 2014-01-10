@@ -29,9 +29,10 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-//Bootstrap routes
-require('./routes/routes')(app, __dirname);
+// Bootstrap routes
+require('./config/routes')(app, __dirname);
 
+// Server Creation
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

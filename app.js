@@ -18,6 +18,13 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 
+// templating engine for admin tool
+var hbs = require('hbs');
+app.set('view engine', 'html');
+app.set('views', './admin/views');
+app.engine('html', hbs.__express);
+
+// static content
 app.use(express.static(__dirname + '/components'));
 app.use(express.static(__dirname + '/public'));
 

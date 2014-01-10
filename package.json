@@ -8,6 +8,7 @@
   "dependencies": {
     "npm": "1.3.8",
     "express": "3.4.7",
+    "hbs":"*",
     "mongoose": "*"
   }
 }

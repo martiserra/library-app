@@ -14,7 +14,7 @@ module.exports = function(app, basedir, express) {
   // Admin routes
   app.get('/admin', auth, function(req, res) {
     //res.sendfile(basedir + '/admin/views/index.html');
-    res.send("This would be some HTML");
+    res.render('index');
   });
 
   app.post('/libraries', function(req, res) {

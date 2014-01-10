@@ -21,7 +21,7 @@ app.use(app.router);
 // templating engine for admin tool
 var hbs = require('hbs');
 app.set('view engine', 'html');
-app.set('views', './admin/views');
+app.set('views', './app/views');
 app.engine('html', hbs.__express);
 
 // static content

@@ -1,12 +1,20 @@
 'use strict';
 
-module.exports = function(app, basedir) {
+module.exports = function(app, basedir, express) {
   var libraries = require('../app/controllers/libraries');
+  var auth = express.basicAuth('clara', 'cmg000');
 
+  // App routes
   app.get('/libraries/:id', libraries.get);
 
   app.get('/', function(req, res) {
     res.sendfile(basedir + '/app/views/index.html');
+  });
+
+  // Admin routes
+  app.get('/admin', auth, function(req, res) {
+    //res.sendfile(basedir + '/admin/views/index.html');
+    res.send("This would be some HTML");
   });
 
   app.post('/libraries', function(req, res) {

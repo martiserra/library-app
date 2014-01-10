@@ -32,7 +32,7 @@ if ('development' == app.get('env')) {
 }
 
 // Bootstrap routes
-require('./config/routes')(app, __dirname);
+require('./config/routes')(app, __dirname, express);
 
 // Server Creation
 http.createServer(app).listen(app.get('port'), function(){

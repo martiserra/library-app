@@ -13,11 +13,13 @@ module.exports = function(app, basedir, express) {
   });
 
   // Admin routes
-  app.get('/admin', admin.list);
+  app.get('/admin', auth, admin.list);
 
-  app.post('/libraries', function(req, res) {
-    libraries.post(req.body.code, req.body.name, req.body.places)
-  });
+
+  app.get('/admin/libraries/add', auth, admin.getNewLibrary);
+  app.post('/admin/libraries/add', auth, admin.postNewLibrary);
+  app.get('/admin/libraries/:id', auth, admin.getLibrary);
+  app.get('/admin/libraries/delete/:id', auth, admin.deleteLibrary);
 
 };
 

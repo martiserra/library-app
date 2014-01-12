@@ -8,7 +8,7 @@ Lungo.init({
 // Show Disclaimer Notification
 Lungo.Notification.success(
     "Estem de Proves!",
-    "L'aplicació funcionarà els dies 11 i 12 de Gener en fase de proves a la Biblioteca de Ciències Socials de la UAB. Si vols, deixa'ns els teus comentaris a l'apartat d'opinions. Gràcies!",
+    "L'aplicació funcionarà els dies 18 i 19 de Gener en fase de proves a la Biblioteca de Ciències Socials de la UAB. Si vols, deixa'ns els teus comentaris a l'apartat d'opinions. Gràcies!",
     7,
     function(){}
 );

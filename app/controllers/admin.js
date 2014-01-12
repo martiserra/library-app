@@ -18,7 +18,12 @@ exports.getLibrary = (function(req, res) {
       console.log('ADMIN -- Error loading library' + id + ' -- ' + error);
       res.send('Not Found', 404);
     } else {
-      res.render('library_show', {library: library});
+      LibraryActivity.find({library: library._id}, function(error, activities) {
+        if (error || activities == null) {
+          console.log('ADMIN -- Error loading activities for library:' + id + ' -- ' + error);
+        } 
+        res.render('library_show', {library: library, activities: activities});
+      });
     }
   });  
 });
@@ -58,7 +63,7 @@ exports.deleteLibrary = (function(req, res) {
     } else {
       library.remove(function (err) {
         if (!err) {
-          return console.log("created");
+          return console.log("library succesfully removed");
         } else {
           return console.log(err);
         }
@@ -77,10 +82,10 @@ exports.addActivity = (function(req, res) {
       res.send('Not Found', 404);
     } else {
       var libraryActivity;
-
+      var date = Date.now()
       libraryActivity = new LibraryActivity({
         library: library._id,
-        date: Date.now,
+        date: date,
         inbound: req.body.inbound,
         outbound: req.body.outbound
       });
@@ -92,9 +97,28 @@ exports.addActivity = (function(req, res) {
           return console.log(error);
         }
       });
-        res.redirect('/admin/libraries/' + id, 301);
+      res.redirect('/admin/libraries/' + id, 301);  
     }
   });
 
 });
+
+exports.deleteActivity = (function(req, res) {
+  var id = req.params.id;
+  LibraryActivity.findOne({_id: id}, function(error, activity) {
+    if (error || activity == null) {
+      console.log('ADMIN -- Error loading activity' + id + ' -- ' + error);
+      res.send('Not Found', 404);
+    } else {
+      activity.remove(function (err) {
+        if (!err) {
+          return console.log("activity removed!");
+        } else {
+          return console.log(err);
+        }
+      });
+      res.redirect('/admin/', 301);
+    }
+  });
+}); 
 

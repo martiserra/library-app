@@ -22,7 +22,7 @@ module.exports = function(app, basedir, express) {
   app.get('/admin/libraries/delete/:id', auth, admin.deleteLibrary);
 
   app.post('/admin/activity/add/:id', auth, admin.addActivity);
-
+  app.get('/admin/activity/delete/:id', auth, admin.deleteActivity);
 };
 
 

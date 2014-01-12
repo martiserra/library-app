@@ -28,6 +28,15 @@ Places: {{library.places}}<br/><br/>
     </div>
 </form>
 
+<h2> Llista </h2>
+<ul>
+{{#each activities}}
+    <li> {{inbound}} | -{{outbound}} || {{date}} || 
+        <a href="/admin/activity/delete/{{_id}}"> Borrar </a>
+    </li>
+{{/each}}
+</ul>
+
 <footer>
   <a href="/admin/libraries/delete/{{library.code}}"> !! Eliminar Biblioteca </a>
 </footer>

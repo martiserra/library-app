@@ -1,9 +1,32 @@
 <h1>{{library.name}}</h1>
+
 Code: {{library.code}}<br/>
 Name: {{library.name}}<br/>
 University: {{library.university}}<br/>
 Location: {{library.location}}<br/>
 Places: {{library.places}}<br/><br/>
+
+<h1> Activitat </h1>
+
+<form action="/admin/activity/add/{{library.code}}" method="POST" class="form-horizontal">
+    <div class="control-group">
+        <label class="control-label required">Entrada</label>
+        <div class="controls">
+            <input class="input-mini" type="text" name="inbound" placeholder="0" class="text-style">
+        </div>
+    </div>
+    <div class="control-group">  
+        <label class="control-label required">Sortida</label>
+        <div class="controls">
+            <input class="input-large" type="text" name="outbound" placeholder="0" class="text-style">
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-primary">Afegir</button>
+        </div>
+    </div>
+</form>
 
 <footer>
   <a href="/admin/libraries/delete/{{library.code}}"> !! Eliminar Biblioteca </a>

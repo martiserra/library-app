@@ -23,14 +23,7 @@ exports.getLibrary = (function(req, res) {
 });
 
 exports.getNewLibrary = (function(req, res) {
-    var library = {
-      code: 0,
-      name: "",
-      university: "",
-      location: "",
-      places: 0
-    };
-    res.render('library_add', { library: library });
+    res.render('library_add');
 });
 
 exports.postNewLibrary = (function(req, res) {

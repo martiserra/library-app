@@ -4,6 +4,8 @@ var mongoose = require('mongoose')
 var librarySchema = new Schema({
   code: Number,
   name: String,
+  university: String,
+  location: String,
   places: Number
 });
  

@@ -2,7 +2,9 @@
  * Controller for libraries routes
  */
 
-var  Library = require('../models/library.js');
+var Library = require('../models/library.js');
+var LibraryActivity = require('../models/libraryActivity.js');
+var OccupancyHelper = require('../helpers/OccupancyHelper.js');
 
 exports.get = function(req, res) {
   var id = req.params.id;
@@ -14,13 +16,28 @@ exports.get = function(req, res) {
       res.send('Not Found', 404);
 
     } else {
-      var libraryPresenter = {
-        code: library.code,
-        name: library.name,
-        places: library.places,
-        occupancy: 0.83 
-      }
-      res.json(JSON.stringify(libraryPresenter));
+      var now = new Date();
+      var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      LibraryActivity.find({library: library._id, date: {"$gte": today}}, function(error, activities) {
+        if (error || activities == null) {
+          console.log('ADMIN -- Error loading activities for library:' + id + ' -- ' + error);
+          res.send('Not Found', 404);
+        } else {
+          var occupancy = OccupancyHelper.getOccupancy(activities);
+          var percentage = occupancy / library.places;
+          console.log("Occupancy: " + occupancy + ", percentage: " + percentage);
+
+          var libraryPresenter = {
+            code: library.code,
+            name: library.name,
+            places: library.places,
+            occupancy: percentage
+          }
+
+          res.json(JSON.stringify(libraryPresenter));
+        }
+        
+      });
     }
   });  
 };

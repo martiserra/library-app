@@ -18,7 +18,9 @@ exports.getLibrary = (function(req, res) {
       console.log('ADMIN -- Error loading library' + id + ' -- ' + error);
       res.send('Not Found', 404);
     } else {
-      LibraryActivity.find({library: library._id}, function(error, activities) {
+      var now = new Date();
+      var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      LibraryActivity.find({library: library._id, date: {"$gte": today}}).sort({date: 'desc'}).exec(function(error, activities) {
         if (error || activities == null) {
           console.log('ADMIN -- Error loading activities for library:' + id + ' -- ' + error);
         } 

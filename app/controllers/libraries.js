@@ -32,7 +32,9 @@ exports.get = function(req, res) {
             name: library.name,
             places: library.places,
             occupancy: percentage,
-            lastUpdate : lastUpdate
+            lastUpdate : lastUpdate,
+            chartLabels: ["9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","Ara"],
+            chartData: [28,48,40,19,96,27,100,28,48,40,19,96]
           }
 
           res.json(JSON.stringify(libraryPresenter));

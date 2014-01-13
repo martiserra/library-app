@@ -45,27 +45,27 @@ refreshLibraryData = function(){
     Lungo.dom('#places').text(library.places);
     Lungo.dom('#library-name').text(library.name);
     Lungo.dom('#lastUpdate').text(library.lastUpdate);
-    
+
     var ctx = document.getElementById("occupancyChart").getContext("2d");
     ctx.canvas.width  = window.innerWidth - 20;
     ctx.canvas.height = 150;
 
-    var myLine = new Chart(document.getElementById("occupancyChart").getContext("2d")).Line(getChartData(), getChartOptions());
+    var myLine = new Chart(document.getElementById("occupancyChart").getContext("2d")).Line(getChartData(library.chartLabels, library.chartData), getChartOptions());
 
 }
 
 
 // Chart Creation
-getChartData = function(){
+getChartData = function(labels, data){
     var lineChartData = {
-        labels : ["9:00","10:00","11:00","12:00","13:00","14:00","15:00"],
+        labels : labels,
         datasets : [
             {
                 fillColor : "rgba(151,187,205,0.5)",
                 strokeColor : "rgba(151,187,205,1)",
                 pointColor : "rgba(151,187,205,1)",
                 pointStrokeColor : "#fff",
-                data : [28,48,40,19,96,27,100]
+                data : data
             }
         ]
     }

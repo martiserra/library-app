@@ -44,6 +44,8 @@ refreshLibraryData = function(){
     Lungo.dom('#percentage').text(getPercentage(library.occupancy));
     Lungo.dom('#places').text(library.places);
     Lungo.dom('#library-name').text(library.name);
+    Lungo.dom('#lastUpdate').text(library.lastUpdate);
+    
     var ctx = document.getElementById("occupancyChart").getContext("2d");
     ctx.canvas.width  = window.innerWidth - 20;
     ctx.canvas.height = 150;

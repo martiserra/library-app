@@ -27,8 +27,7 @@ exports.get = function(req, res) {
           var percentage = OccupancyHelper.getPercentage(occupancy, library.places);
           var lastUpdate = OccupancyHelper.getLastUpdate(activities[activities.length - 1]);
           var chartInfo = OccupancyHelper.getChartInfo(activities, library.places);
-          console.log(chartInfo);
-
+          
           var libraryPresenter = {
             code: library.code,
             name: library.name,

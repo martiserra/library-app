@@ -24,7 +24,7 @@ exports.get = function(req, res) {
           res.send('Not Found', 404);
         } else {
           var occupancy = OccupancyHelper.getOccupancy(activities);
-          var percentage = occupancy / library.places;
+          var percentage = OccupancyHelper.getPercentage(occupancy, library.places);
           var lastUpdate = OccupancyHelper.getLastUpdate(activities[0]);
 
           var libraryPresenter = {

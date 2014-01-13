@@ -9,6 +9,10 @@ exports.getOccupancy = (function(activities) {
   return occupancy >= 0 ? occupancy : 0;
 });
 
+exports.getPercentage = (function(occupancy, places) {
+  return occupancy >= places ? 1 : occupancy / places;
+});
+
 exports.getLastUpdate = (function(lastActivity) {
   var now = new Date()
   var difference = now.getTime() - lastActivity.date.getTime();

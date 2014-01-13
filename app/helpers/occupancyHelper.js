@@ -14,22 +14,22 @@ exports.getPercentage = (function(occupancy, places) {
 });
 
 exports.getLastUpdate = (function(lastActivity) {
-  var now = new Date()
-  var difference = now.getTime() - lastActivity.date.getTime();
+  if (!lastActivity) {
+    return "Ocupació d'avui no disponible"
+  } else {
+    var now = new Date()
+    var difference = now.getTime() - lastActivity.date.getTime();
 
-  if (difference < 1000 * 60) {
-    return "menys d'un minut";
-  } else if (difference < 1000 * 60 * 60) {
-    var minutes = Math.floor(difference / 1000 / 60);
-    return  minutes == 1 ? "1 minut" : minutes + " minuts";
-  } else if (difference < 1000 * 60 * 60 * 24) {
-    var hours = Math.floor(difference / 1000 / 60 / 60);
-    return hours == 1 ? "1 hora" : hours + " hores";
-  } else if (difference < 1000 * 60 * 60 * 24) {
-    var days = Math.floor(difference / 1000 / 60 / 60 / 24)
-    return  days == 1 ? "1 dia" : days + " dies";
+    if (difference < 1000 * 60) {
+      return "Ocupació actualitzada fa menys d'un minut";
+    } else if (difference < 1000 * 60 * 60) {
+      var minutes = Math.floor(difference / 1000 / 60);
+      return  minutes == 1 ? "Ocupació actualitzada fa 1 minut" : "Ocupació actualitzada " + minutes + " minuts";
+    } else if (difference < 1000 * 60 * 60 * 24) {
+      var hours = Math.floor(difference / 1000 / 60 / 60);
+      return hours == 1 ? "Ocupació actualitzada fa 1 hora" : "Ocupació actualitzada fa " + hours + " hores";
+    } 
   }
-  
 });
 
 exports.getChartInfo = (function(activities, places) {

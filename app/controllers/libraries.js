@@ -18,14 +18,16 @@ exports.get = function(req, res) {
     } else {
       var now = new Date();
       var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-      LibraryActivity.find({library: library._id, date: {"$gte": today}}).sort({date: 'desc'}).exec(function(error, activities) {
+      LibraryActivity.find({library: library._id, date: {"$gte": today}}).sort({date: 'asc'}).exec(function(error, activities) {
         if (error || activities == null) {
           console.log('ADMIN -- Error loading activities for library:' + id + ' -- ' + error);
           res.send('Not Found', 404);
         } else {
           var occupancy = OccupancyHelper.getOccupancy(activities);
           var percentage = OccupancyHelper.getPercentage(occupancy, library.places);
-          var lastUpdate = OccupancyHelper.getLastUpdate(activities[0]);
+          var lastUpdate = OccupancyHelper.getLastUpdate(activities[activities.length - 1]);
+          var chartInfo = OccupancyHelper.getChartInfo(activities, library.places);
+          console.log(chartInfo);
 
           var libraryPresenter = {
             code: library.code,
@@ -33,8 +35,8 @@ exports.get = function(req, res) {
             places: library.places,
             occupancy: percentage,
             lastUpdate : lastUpdate,
-            chartLabels: ["9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","Ara"],
-            chartData: [28,48,40,19,96,27,100,28,48,40,19,96]
+            chartLabels: chartInfo.labels,
+            chartData: chartInfo.data
           }
 
           res.json(JSON.stringify(libraryPresenter));

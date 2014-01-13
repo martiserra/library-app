@@ -31,3 +31,25 @@ exports.getLastUpdate = (function(lastActivity) {
   }
   
 });
+
+exports.getChartInfo = (function(activities, places) {
+  var labels = [];
+  var data = [];
+  var occupancy = 0;
+  var previousHour = -1;
+  for (var i = 0; i < activities.length; i++) {
+    var hour = activities[i].date.getHours();
+    if (previousHour != hour) {
+      labels.push(hour + ":00");
+      data.push(this.getPercentage(occupancy, places) * 100);
+      previousHour = hour;
+    }
+    occupancy += activities[i].inbound;
+    occupancy -= activities[i].outbound;
+  }
+  if (previousHour != -1) {
+    labels.push("Ara");
+    data.push(this.getPercentage(occupancy, places) * 100);  
+  }
+  return {labels : labels, data : data};
+});

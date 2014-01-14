@@ -46,7 +46,7 @@
         <article id="list" class="active list scroll">
             <ul>
               <li class="arrow">
-                  <a href="#" data-view-article="view"> 
+                  <a href="#" data-view-article="view" onClick="ga('send', 'event', 'Library', 'View', '1');"> 
                     <strong class="text bold"> Biblioteca de Ciències Socials </strong>
                     <small> UAB (Bellaterra) </small>
                   </a>
@@ -70,7 +70,7 @@
                 <li data-icon="group">
                     <strong><span id="places">0</span> places totals </strong>
                 </li>
-                <li class="selectable" id="refresh">    
+                <li class="selectable" id="refresh" onClick="ga('send', 'event', 'Library', 'Refresh', '1');">    
                         <span data-icon="refresh"></span>
                         <strong> <span id="lastUpdate">Ocupació d'avui no disponible</span> </strong>
                         <small> Clica per refrescar </small>
@@ -89,5 +89,17 @@
     
     <!-- Lungo App -->
     <script src="javascript/lungo-app.js"></script>
+
+    <!-- Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-47142636-1', 'af.cm');
+      ga('send', 'pageview');
+
+    </script>
 
 </body>

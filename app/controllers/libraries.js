@@ -4,7 +4,7 @@
 
 var Library = require('../models/library.js');
 var LibraryActivity = require('../models/libraryActivity.js');
-var OccupancyHelper = require('../helpers/OccupancyHelper.js');
+var OccupancyHelper = require('../helpers/occupancyHelper.js');
 
 exports.get = function(req, res) {
   var id = req.params.id;

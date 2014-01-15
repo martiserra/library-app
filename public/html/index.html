@@ -26,7 +26,7 @@
     
     <section id="libraries">
         <header class="title">
-            <nav class="on-left" data-article="view">
+            <nav class="on-left" data-article="view info comments thanks">
               <a href="#" data-view-article="list" data-icon="chevron-left"></a>
             </nav>
             
@@ -39,8 +39,8 @@
 
         <nav id="options" data-control="menu"> 
             <a href="#" data-view-article="list" data-icon="menu">Llista de Biblioteques</a>
-            <a href="#" data-view-article="explore-menu" data-icon="info-sign">Informació</a>
-            <a href="#" data-view-article="activity-menu" data-icon="comments">Opinions</a>
+            <a href="#" data-view-article="info" data-icon="info-sign" onClick="ga('send', 'event', 'Library', 'Info', '1');">Informació</a>
+            <a href="#" data-view-article="comments" data-icon="comments" onClick="ga('send', 'event', 'Library', 'Comments', 'GET');">Opinions</a>
         </nav>
 
         <article id="list" class="active list scroll">
@@ -78,6 +78,36 @@
                 <li>
                     <canvas id="occupancyChart" height="150"></canvas>
                 </li>
+            </ul>
+        </article>
+
+        <article id="info" class="list">
+            <ul>
+              <li>
+                  Biblioteques APP t'ajuda a trobar lloc a la teva biblioteca! Consulta'n l'ocupació abans d'anar a estudiar, així no et quedaràs sense lloc.<br/><br/> Actualment estem en fase de proves, t'ho agraïrem si ens deixes la teva opinió!!
+              </li>
+            </ul>
+        </article>
+
+         <article id="comments" class="indented">
+            <div class="form">
+                <fieldset>
+                    <textarea id="comment_text" placeholder="Escriu la teva opinió" rows="6"></textarea>
+                </fieldset>
+                <label>Email</label>
+                <fieldset>
+                    <input id="comment_email" type="text" placeholder="El teu email">
+                </fieldset>
+                <br/>
+                <button class="anchor margin-bottom" data-icon="ok" data-label="Envia" onClick="ga('send', 'event', 'Library', 'Comments', 'POST');"></button>
+            </div>
+        </article>
+
+        <article id="thanks" class="list">
+            <ul>
+              <li>
+                  Gràcies per compartir la teva opinió i ajudar-nos a construïr una APP millor! 
+              </li>
             </ul>
         </article>
         

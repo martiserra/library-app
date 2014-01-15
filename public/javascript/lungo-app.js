@@ -29,11 +29,16 @@ Lungo.Service.Settings.timeout = 20000;
 
 // Lungo Events
 Lungo.Events.init({
-    'load article#view': function(){
+    'load article#view': function() {
         refreshLibraryData();    
     }, 
-    'tap article#view li#refresh' : function(){
+    'tap article#view li#refresh' : function() {
         refreshLibraryData();    
+    },
+    'tap article#comments button' : function() {
+        var text = Lungo.dom('#comment_text').val();
+        var email = Lungo.dom('#comment_email').val();
+        Lungo.Router.article("libraries", "thanks");
     }
 });
 

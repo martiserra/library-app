@@ -3,6 +3,7 @@
 module.exports = function(app, basedir, express) {
   var libraries = require('../app/controllers/libraries');
   var admin = require('../app/controllers/admin');
+  var comments = require('../app/controllers/comments')
   var auth = express.basicAuth('clara', 'cmg000');
 
   // App routes
@@ -11,6 +12,8 @@ module.exports = function(app, basedir, express) {
   app.get('/', function(req, res) {
     res.sendfile(basedir + '/public/html/index.html');
   });
+
+  app.post('/comments/add', comments.add);
 
   // Admin routes
   app.get('/admin', auth, admin.list);

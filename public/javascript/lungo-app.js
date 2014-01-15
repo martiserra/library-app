@@ -1,5 +1,6 @@
 // CONSTANTS
 var GET_LIBRARY = "/libraries/1";
+var POST_COMMENT = "/comments/add";
 
 // Init Lungo Application
 Lungo.init({
@@ -36,9 +37,7 @@ Lungo.Events.init({
         refreshLibraryData();    
     },
     'tap article#comments button' : function() {
-        var text = Lungo.dom('#comment_text').val();
-        var email = Lungo.dom('#comment_email').val();
-        Lungo.Router.article("libraries", "thanks");
+        postComment();
     }
 });
 
@@ -57,6 +56,16 @@ refreshLibraryData = function(){
 
     var myLine = new Chart(document.getElementById("occupancyChart").getContext("2d")).Line(getChartData(library.chartLabels, library.chartData), getChartOptions());
 
+}
+
+postComment = function(){
+    var text = Lungo.dom('#comment_text').val();
+    var email = Lungo.dom('#comment_email').val();
+   
+    var data = {email: email, comment: text};
+    Lungo.Service.post(POST_COMMENT, data);
+   
+    Lungo.Router.article("libraries", "thanks");
 }
 
 

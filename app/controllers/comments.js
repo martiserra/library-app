@@ -3,9 +3,10 @@
  */
 
 var Comment = require('../models/comment.js');
+var DateHelper = require('../helpers/dateHelper.js');
 
 exports.add = (function(req, res) {
-  var date = Date.now()
+  var date = DateHelper.getLocalizedDate();
   var comment = new Comment({
     email: req.body.email,
     comment: req.body.comment,
@@ -22,3 +23,4 @@ exports.add = (function(req, res) {
     }
   });
 });
+

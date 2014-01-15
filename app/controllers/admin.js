@@ -5,6 +5,7 @@
 var Library = require('../models/library.js');
 var LibraryActivity = require('../models/libraryActivity.js');
 var Comment = require('../models/comment.js');
+var DateHelper = require('../helpers/dateHelper.js');
 
 exports.list = (function(req, res) {
   Library.find(function(error, libraries) {
@@ -85,7 +86,7 @@ exports.addActivity = (function(req, res) {
       res.send('Not Found', 404);
     } else {
       var libraryActivity;
-      var date = Date.now()
+      var date = DateHelper.getLocalizedDate();
       libraryActivity = new LibraryActivity({
         library: library._id,
         date: date,

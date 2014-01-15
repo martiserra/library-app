@@ -26,6 +26,8 @@ module.exports = function(app, basedir, express) {
 
   app.post('/admin/activity/add/:id', auth, admin.addActivity);
   app.get('/admin/activity/delete/:id', auth, admin.deleteActivity);
+
+  app.get('/admin/comments', auth, admin.comments);
 };
 
 

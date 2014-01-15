@@ -4,6 +4,7 @@
 
 var Library = require('../models/library.js');
 var LibraryActivity = require('../models/libraryActivity.js');
+var Comment = require('../models/comment.js');
 
 exports.list = (function(req, res) {
   Library.find(function(error, libraries) {
@@ -123,4 +124,10 @@ exports.deleteActivity = (function(req, res) {
     }
   });
 }); 
+
+exports.comments = (function(req, res) {
+  Comment.find().sort({date: 'desc'}).exec(function(error, comments) {
+    res.render('comments', {comments: comments});
+  });  
+});
 

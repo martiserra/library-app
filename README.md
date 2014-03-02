@@ -1,6 +1,6 @@
 library-app
 ===========
 
-Nodejs - Express backend for Library Occupancy Visualization App
+Nodejs - Express - Mongo DB backend app for Library Occupancy Visualization App
 
-Currently just returning mocked data 
+JSON API consumed by a LungoJS frontend app
